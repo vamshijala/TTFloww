@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Menu, User, Cart } from 'lucide-react';
+import { Menu, User, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/contexts/CartContext';
 
@@ -58,7 +58,7 @@ const Header = () => {
               onClick={() => navigate('/cart')}
               className="text-gray-700 hover:text-primary relative"
             >
-              <Cart className="w-4 h-4 mr-2" />
+              <ShoppingCart className="w-4 h-4 mr-2" />
               Cart
               {state.itemCount > 0 && (
                 <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
@@ -114,7 +114,7 @@ const Header = () => {
                 }}
                 className="text-gray-700 hover:text-primary relative"
               >
-                <Cart className="w-4 h-4 mr-2" />
+                <ShoppingCart className="w-4 h-4 mr-2" />
                 Cart
                 {state.itemCount > 0 && (
                   <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
