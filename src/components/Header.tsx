@@ -1,19 +1,16 @@
 
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Menu, User, ShoppingCart } from 'lucide-react';
+import { Menu, User, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useCart } from '@/contexts/CartContext';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { state } = useCart();
   const navigate = useNavigate();
 
   const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'Products', href: '/products' },
-    { name: 'About', href: '/about' },
+    { name: 'Dashboard', href: '/' },
+    { name: 'Settings', href: '/settings' },
   ];
 
   return (
@@ -22,10 +19,10 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">TT</span>
+            <div className="w-8 h-8 bg-[#0066FF] rounded-2xl flex items-center justify-center">
+              <span className="text-white font-bold text-sm">TF</span>
             </div>
-            <span className="font-semibold text-xl text-gray-900">TechTreasures</span>
+            <span className="font-semibold text-xl text-gray-900">TeamFlow</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -34,7 +31,7 @@ const Header = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className="text-gray-700 hover:text-primary font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full"
+                className="text-gray-700 hover:text-[#0066FF] font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#0066FF] after:transition-all after:duration-200 hover:after:w-full"
               >
                 {item.name}
               </Link>
@@ -46,25 +43,20 @@ const Header = () => {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => navigate('/auth')}
-              className="text-gray-700 hover:text-primary"
+              onClick={() => navigate('/settings')}
+              className="text-gray-700 hover:text-[#0066FF]"
             >
-              <User className="w-4 h-4 mr-2" />
-              Login
+              <Settings className="w-4 h-4 mr-2" />
+              Settings
             </Button>
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => navigate('/cart')}
-              className="text-gray-700 hover:text-primary relative"
+              onClick={() => navigate('/auth')}
+              className="text-gray-700 hover:text-[#0066FF]"
             >
-              <ShoppingCart className="w-4 h-4 mr-2" />
-              Cart
-              {state.itemCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  {state.itemCount}
-                </span>
-              )}
+              <User className="w-4 h-4 mr-2" />
+              Login
             </Button>
           </div>
 
@@ -86,7 +78,7 @@ const Header = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className="block text-gray-700 hover:text-primary font-medium py-2"
+                className="block text-gray-700 hover:text-[#0066FF] font-medium py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}
@@ -97,30 +89,25 @@ const Header = () => {
                 variant="ghost"
                 size="sm"
                 onClick={() => {
-                  navigate('/auth');
+                  navigate('/settings');
                   setIsMobileMenuOpen(false);
                 }}
-                className="text-gray-700 hover:text-primary"
+                className="text-gray-700 hover:text-[#0066FF]"
               >
-                <User className="w-4 h-4 mr-2" />
-                Login
+                <Settings className="w-4 h-4 mr-2" />
+                Settings
               </Button>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => {
-                  navigate('/cart');
+                  navigate('/auth');
                   setIsMobileMenuOpen(false);
                 }}
-                className="text-gray-700 hover:text-primary relative"
+                className="text-gray-700 hover:text-[#0066FF]"
               >
-                <ShoppingCart className="w-4 h-4 mr-2" />
-                Cart
-                {state.itemCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                    {state.itemCount}
-                  </span>
-                )}
+                <User className="w-4 h-4 mr-2" />
+                Login
               </Button>
             </div>
           </div>
